@@ -1,0 +1,57 @@
+package com.ciphers;
+
+import java.util.ArrayList;
+
+public class Transposition {
+	private static int height = 3;
+	
+	public static int getHeight() {
+		return height;
+	}
+
+	public static void setHeight(int height) {
+		Transposition.height = height;
+	}
+
+	public static String RouteEcryption(String plainText){
+		String cipherText = null;
+		char[] tmp = plainText.toCharArray();
+		int i ;	
+		
+		int k =0;
+		ArrayList<ArrayList<Character>> mat = new ArrayList<ArrayList<Character>>();
+
+		for ( i=0; i<getHeight(); i++){
+			mat.add(new ArrayList<Character>());
+		}
+		
+		for(int j=0; j<tmp.length; j++){
+			for ( i =0; i< getHeight(); i++){
+				if(tmp[k] == ' '){
+					mat.get(i).add('#');
+					k++;
+				}
+				else{
+					mat.get(i).add(tmp[k++]);
+				}
+			}
+			if(k >= tmp.length){
+				break;
+			}
+		}
+		
+		for (ArrayList<Character> character : mat) {
+			System.out.println(character);
+		}
+		
+		
+		
+		return cipherText;
+	}
+	
+	public static String RouteDecryption(){
+		
+		return null;
+	}
+	
+}

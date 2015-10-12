@@ -1,0 +1,9 @@
+package com.ciphers;
+
+public class ExtendedEuclidean {
+
+	public static int[] extendedEuclideanI(){
+		
+		
+	}
+}

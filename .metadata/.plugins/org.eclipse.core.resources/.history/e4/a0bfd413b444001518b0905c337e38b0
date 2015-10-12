@@ -1,0 +1,69 @@
+package com.ciphers;
+
+import java.math.BigInteger;
+import java.util.Random;
+
+public class RSA {
+	
+	public static BigInteger calculateExponent(Integer base, Integer radix){
+		char str[] = null;
+		str = radix.toBinaryString(radix).toCharArray();
+		BigInteger z = new BigInteger("1");
+		System.out.println("Binary of "+ radix);
+		for(char c : str)
+			System.out.print(c);
+		System.out.println("\nbase "+ base);
+		BigInteger y = new BigInteger(base.toString());
+		for(int i =str.length-1; i >=0 ; i--){
+			System.out.print(">"+str[i]);
+			if(str[i] == '1')
+				z = z.multiply(y);
+			y = y.multiply(y);
+		}
+		System.out.println("Returning: "+ z);
+		return z;
+	}
+	public static void main(String args[]){
+		String msg = "Z";
+		BigInteger b = new BigInteger(msg.getBytes());
+		Integer zz= 0;
+		System.out.println(b);
+		byte[] byteArr = b.toByteArray();
+		for(byte z : byteArr){
+			 zz = (int)z;
+			System.out.println(z+" "+(char)z + "  ");
+		}
+		
+		//Genrate two lage random primes using Miller-Rabin algo
+		Random rnd = new Random();
+		rnd.setSeed(1212);
+		BigInteger p = BigInteger.probablePrime(5, rnd); 
+		BigInteger q = BigInteger.probablePrime(5, rnd); 		
+		BigInteger n = p.multiply(q);
+		BigInteger totientOfn = p.subtract(new BigInteger("1")).multiply(q.subtract(new BigInteger("1")));
+		BigInteger e = new BigInteger("13");
+		BigInteger cipher, plain;
+		System.out.println("p: "+p);
+		System.out.println("q: "+q);
+		System.out.println("n: "+n);
+		System.out.println("totient: "+totientOfn);
+		System.out.println("e: "+e);
+		
+		System.out.println("Auto: "+ e.modInverse(n));
+		
+		int a[] = ExtendedEuclidean.extendedEuclideanI(e, new BigInteger(n.toString()) );
+		System.out.println("Automated inverse: "+ a[0]+" "+a[1]+" "+ a[2]);
+
+		zz=88;
+		cipher = calculateExponent(zz.intValue(),e.intValue()).remainder(new BigInteger("187"));
+		System.out.println();
+		System.out.println("cipher "+cipher);
+		Integer t = a[1];
+		if (t.intValue() < 0)
+			t = t*(-1);
+		plain = calculateExponent(cipher.intValue(), t.intValue()).remainder(new BigInteger("187"));
+		System.out.println();
+		System.out.println("plain "+plain);
+		
+	}
+}

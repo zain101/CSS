@@ -1,0 +1,34 @@
+package com.ciphers;
+
+import java.math.BigInteger;
+
+public class ExtendedEuclidean {
+
+	public static int[] extendedEuclideanI(BigInteger a, BigInteger b){
+		BigInteger u= new BigInteger("1"), v=new BigInteger("0"), p=new BigInteger("0"), q=new BigInteger("1");
+		BigInteger x=new BigInteger("0"), y=new BigInteger("0"), rem, quo;
+		BigInteger r1=BigInteger.valueOf(a.intValue()), r0 = BigInteger.valueOf(b.intValue())  ;
+		do{
+			quo = r1.divide(r0);
+			rem = r1.remainder()(r0);
+			//r1 =  quo * r0 + rem;
+			if(rem.intValue() == 0)
+				break;
+			r1 = r0; 
+			r0 = rem;
+			x = u.subtract(quo.multiply(p));
+			u = p;
+			p = x;
+			y = v.subtract(quo.multiply(q));
+			v=q;
+			q=y;
+		}while(true);
+		
+		return new int[] {r0.intValue(), x.intValue(), y.intValue()};
+	}
+	
+	/*public static void main(String args[]) {
+		int a[] = extendedEuclideanI(36163, 1058);
+		System.out.println(a[0]+" "+a[1]+" "+ a[2]);
+	}*/
+}

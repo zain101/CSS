@@ -1,0 +1,35 @@
+package com.ciphers;
+
+import java.math.BigInteger;
+import java.util.Random;
+
+public class RSA {
+	public static void main(String args[]){
+		String msg = "Z A";
+		BigInteger b = new BigInteger(msg.getBytes());
+		System.out.println(b);
+		byte[] byteArr = b.toByteArray();
+		
+		for(byte z : byteArr)
+		System.out.println(z+" "+(char)z);
+		
+		//Genrate two lage random primes using Miller-Rabin algo
+		Random rnd = new Random();
+		rnd.setSeed(1212);
+		BigInteger p = BigInteger.probablePrime(512, rnd); 
+		BigInteger q = BigInteger.probablePrime(512, rnd); 		
+		BigInteger n = p.multiply(q);
+		BigInteger totientOfn = p.subtract(new BigInteger("1")).multiply(q.subtract(new BigInteger("1")));
+		BigInteger e = new BigInteger("65537");
+		System.out.println(p);
+		System.out.println(q);
+		System.out.println(n);
+		System.out.println(totientOfn);
+		System.out.println(e);
+		System.out.println("Auto: "+ e.modInverse(totientOfn));
+		int a[] = ExtendedEuclidean.extendedEuclideanI(new BigInteger("160"), new BigInteger("7") );
+		System.out.println("Automated inverse: "+ a[0]+" "+a[1]+" "+ a[2]);
+		
+		
+	}
+}

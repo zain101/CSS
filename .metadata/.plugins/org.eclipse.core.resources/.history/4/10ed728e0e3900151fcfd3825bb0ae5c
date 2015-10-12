@@ -1,0 +1,22 @@
+package com.ciphers;
+
+import java.util.ArrayList;
+
+import com.inputHandlers.InputHander;
+
+
+public class MainTest {
+	public static void main(String args[]){
+		String msg;
+		/*System.out.println("Give a message");
+		msg = InputHander.readString();
+		StringBuffer str = new StringBuffer();
+			str =	Substitution.ceaserEncrypt(msg);
+		System.out.println("Encrypted messsage: "+ str);
+		System.out.println("Decrypted messsage: "+ Substitution.ceaserDeacrypt(str.toString()));*/
+		
+		ArrayList<char> mat = new ArrayList<char>();
+		ArrayList<String> al=new ArrayList<String>();  
+
+	}
+}

@@ -1,0 +1,98 @@
+package com.ciphers;
+
+
+
+public class MainTest {
+	public static void main(String args[]){
+		/*System.out.println("Give a message");
+		msg = InputHander.readString();
+		StringBuffer str = new StringBuffer();
+			str =	Substitution.ceaserEncrypt(msg);
+		System.out.println("Encrypted messsage: "+ str);
+		System.out.println("Decrypted messsage: "+ Substitution.ceaserDeacrypt(str.toString()));*/
+
+		/*String msg = "WE ARE DISCOVERED FLEE AT ONCE";
+		char[] tmp = msg.toCharArray();
+
+		int i;
+		int k =0;
+		ArrayList<ArrayList<Character>> mat = new ArrayList<ArrayList<Character>>();
+		mat.add(new ArrayList<Character>());
+		mat.add(new ArrayList<Character>());
+		mat.add(new ArrayList<Character>());
+
+
+
+		for(int j=0; j<tmp.length; j++){
+			for ( i =0; i< 3; i++){
+				if(tmp[k] == ' '){
+					mat.get(i).add('#');
+					k++;
+				}
+				else{
+					mat.get(i).add(tmp[k++]);
+				}
+			}
+			if(k >= tmp.length){
+				break;
+			}
+		}
+
+		for (ArrayList<Character> character : mat) {
+			System.out.println(character);
+		}
+		System.out.println(mat.get(0).size());
+		int r = 3;
+		int c = mat.get(0).size();
+		k=0;
+		int l=0;
+		i=0;
+		StringBuffer cipher = new StringBuffer() ;
+
+		while(k < r && l < c){
+			for (i = l; i < c; i++){
+				cipher.append(mat.get(k).get(i));
+			}
+			k++;
+			for (i = k; i < r; ++i){
+				cipher.append(mat.get(i).get(c-1));
+			}
+			c--;
+
+			if ( k < r){
+				for (i = c-1; i >= l; --i){
+					cipher.append(mat.get(r-1).get(i));
+				}
+			}
+			r--;
+
+			if (l < c){
+				for (i = r-1; i >= k; --i){
+					cipher.append(mat.get(i).get(l));
+				}
+				l++;    
+
+			}
+		}
+
+		System.out.println(cipher);
+*/		String msg = "WE ARE DISCOVERED FLEE AT ONCE";
+		String tmp;
+		System.out.println("Plain text for all ciphers: "+msg);
+		System.out.println("Substitution cipher example [Ceaser cipher]");
+		tmp = Substitution.ceaserEncrypt(msg).toString();
+		System.out.println("Ceaser encrrypt: "+ tmp);
+		System.out.println("Ceaser decrypt: "+ Substitution.ceaserDeacrypt(tmp));
+		
+		System.out.println("\n\nTransposition cipher eaxmple [Route cipher]");
+		tmp  = Transposition.RouteEcryption("WE ARE DISCOVERED FLEE AT ONCE").toString();
+		System.out.println("Encrypted text: "+ tmp);
+		System.out.println("Decrypted text: "+ Transposition.RouteDecryption(tmp));
+
+		System.out.println("\n\nTransposition cipher eaxmple [Columnar Tranposition cipher]");
+		tmp = Transposition.ColumnarEncryption("WE ARE DISCOVERED FLEE AT ONCE") ;
+		System.out.println("Columnar ecryption: "+ tmp);
+		System.out.println("Columnar Decrypted text: "+ Transposition.ColumnarDecryption(tmp));
+		
+	}
+}

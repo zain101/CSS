@@ -1,0 +1,14 @@
+package com.ciphers;
+
+public class Transposition {
+
+	public static String RouteEcryption(){
+		
+		return null;
+	}
+	public static String RouteDecryption(){
+		
+		return null;
+	}
+	
+}

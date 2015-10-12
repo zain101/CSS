@@ -1,0 +1,16 @@
+package com.ciphers;
+
+import java.math.BigInteger;
+
+public class RSA {
+	public static void main(String args[]){
+		String msg = "A";
+		byte[] a =  msg.getBytes();
+		BigInteger b = new BigInteger(msg.getBytes());
+		System.out.println(b);
+		byte[] byteArr = b.toByteArray();
+		
+		for(byte z : byteArr)
+		System.out.print(z+" "+(char)z);
+	}
+}

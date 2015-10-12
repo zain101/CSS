@@ -1,0 +1,62 @@
+package com.ciphers;
+
+import java.math.BigInteger;
+import java.util.Random;
+
+public class RSA {
+	
+	public static BigInteger calculateExponent(Integer base, Integer radix){
+		char str[] = null;
+		str = radix.toBinaryString(radix).toCharArray();
+		BigInteger z = new BigInteger("1");
+		for(char c : str)
+			System.out.print(c);
+		BigInteger y = new BigInteger(base.toString());
+		System.out.println();
+		for(int i =str.length-1; i >=0 ; i--){
+			System.out.print(">"+str[i]);
+			if(str[i] == '1')
+				z = z.multiply(y);
+			y = y.multiply(y);
+		}
+		return z;
+	}
+	public static void main(String args[]){
+		String msg = "Z";
+		BigInteger b = new BigInteger(msg.getBytes());
+		Integer zz= 0;
+		System.out.println(b);
+		byte[] byteArr = b.toByteArray();
+		for(byte z : byteArr){
+			 zz = (int)z;
+			System.out.println(z+" "+(char)z + "  ");
+		}
+		
+		//Genrate two lage random primes using Miller-Rabin algo
+		Random rnd = new Random();
+		rnd.setSeed(1212);
+		BigInteger p = BigInteger.probablePrime(512, rnd); 
+		BigInteger q = BigInteger.probablePrime(512, rnd); 		
+		BigInteger n = p.multiply(q);
+		BigInteger totientOfn = p.subtract(new BigInteger("1")).multiply(q.subtract(new BigInteger("1")));
+		BigInteger e = new BigInteger("7");
+		BigInteger cipher, plain;
+		System.out.println(p);
+		System.out.println(q);
+		System.out.println(n);
+		System.out.println(totientOfn);
+		System.out.println(e);
+		System.out.println("Auto: "+ e.modInverse(totientOfn));
+		int a[] = ExtendedEuclidean.extendedEuclideanI(new BigInteger("160"), new BigInteger("7") );
+		System.out.println("Automated inverse: "+ a[0]+" "+a[1]+" "+ a[2]);
+		zz=88;
+		cipher = calculateExponent(zz.intValue(),e.intValue()).remainder(new BigInteger("187"));
+		System.out.println();
+		System.out.println("cipher "+cipher);
+		
+		plain = calculateExponent(cipher.intValue(), new	BigInteger("23").intValue()).remainder(new BigInteger("187"));
+		System.out.println();
+		System.out.println("plain "+plain);
+		
+	}
+}

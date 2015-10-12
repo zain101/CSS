@@ -1,0 +1,31 @@
+package com.ciphers;
+
+public class ExtendedEuclidean {
+
+	public static int[] extendedEuclideanI(int a, int b){
+		int u=1, v=0, p=0, q=1;
+		int x=0, y=0, rem, quo;
+		int r1=a, r0=b ;
+		do{
+			quo = (r1/r0);
+			rem = (r1%r0);
+			//r1 =  quo * r0 + rem;
+			if(rem == 0)
+				break;
+			r1 = r0; 
+			r0 = rem;
+			x = u - (quo*p);
+			u = p;
+			p = x;
+			y = v - (quo*q);
+			v=q;
+			q=y;
+		}while(true);
+		
+		return new int[] {r0, x, y};
+	}
+	
+	public static void main(String args[]) {
+		int a[] = extendedEuclideanI(160, 7)
+	}
+}

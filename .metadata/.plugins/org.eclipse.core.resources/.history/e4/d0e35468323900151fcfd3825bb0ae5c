@@ -1,0 +1,25 @@
+package com.ciphers;
+
+public class Transposition {
+	private static int height = 4;
+	
+	public static int getHeight() {
+		return height;
+	}
+
+	public static void setHeight(int height) {
+		Transposition.height = height;
+	}
+
+	public static String RouteEcryption(String plainText){
+		String cipherText = null;
+			
+		return cipherText;
+	}
+	
+	public static String RouteDecryption(){
+		
+		return null;
+	}
+	
+}

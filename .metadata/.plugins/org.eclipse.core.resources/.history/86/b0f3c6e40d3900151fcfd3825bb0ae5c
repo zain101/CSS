@@ -1,0 +1,17 @@
+package com.ciphers;
+
+import com.inputHandlers.InputHander;
+
+
+public class MainTest {
+	public static void main(String args[]){
+		String msg;
+		System.out.println("G"
+				+ "ive a message");
+		msg = InputHander.readString();
+		StringBuffer str = new StringBuffer();
+			str =	Substitution.ceaserEncrypt(msg);
+		System.out.println("Encrypted messsage: "+ str);
+		System.out.println("Decrypted messsage: "+ Substitution.ceaserDeacrypt(str.toString()));
+	}
+}

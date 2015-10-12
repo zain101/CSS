@@ -1,0 +1,19 @@
+package com.ciphers;
+
+public class ExtendedEuclidean {
+
+	public static int[] extendedEuclideanI(int a, int b){
+		int u, v, p, q;
+		int x, y, rem;
+		int r1=a, r0=b ;
+		do{
+			rem = (r1%r0);
+			r1 =  (r1/r0) * r0 + rem;
+			if(rem == 0)
+				break;
+			
+		}while(true);
+		
+		return new int[] {0, 0, 0};
+	}
+}

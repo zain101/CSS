@@ -1,0 +1,98 @@
+package com.ciphers;
+
+import java.util.ArrayList;
+
+import javax.crypto.Cipher;
+
+public class Transposition {
+	private static int height = 3;
+	
+	public static int getHeight() {
+		return height;
+	}
+
+	public static void setHeight(int height) {
+		Transposition.height = height;
+	}
+
+	public static ArrayList<ArrayList<Character>> routeMatrixArrange(char[] tmp){
+		ArrayList<ArrayList<Character>> mat = new ArrayList<ArrayList<Character>>();
+		int i;
+		int k =0;
+		for(i=0; i<getHeight(); i++){
+			mat.add(new ArrayList<Character>());
+		}
+		for(int j=0; j<tmp.length; j++){
+			for ( i =0; i< 3; i++){
+				if(tmp[k] == ' '){
+					mat.get(i).add('#');
+					k++;
+				}
+				else{
+					mat.get(i).add(tmp[k++]);
+				}
+			}
+			if(k >= tmp.length){
+				break;
+			}
+		}
+		return mat;
+	} 
+	
+	public static StringBuffer SpiralTopLeftClockwise(ArrayList<ArrayList<Character>> mat){
+		int r = 3;
+		int c = mat.get(0).size();
+		int k=0;
+		int l=0;
+		int i=0;
+		StringBuffer cipherText = new StringBuffer() ;
+		while(k < r && l < c){
+			for (i = l; i < c; i++){
+				cipherText.append(mat.get(k).get(i));
+			}
+			k++;
+			for (i = k; i < r; ++i){
+				cipherText.append(mat.get(i).get(c-1));
+			}
+			c--;
+
+			if ( k < r){
+				for (i = c-1; i >= l; --i){
+					cipherText.append(mat.get(r-1).get(i));
+				}
+			}
+			r--;
+
+			if (l < c){
+				for (i = r-1; i >= k; --i){
+					cipherText.append(mat.get(i).get(l));
+				}
+				l++;    
+
+			}
+		}
+		
+		return cipherText;
+	}
+	public static StringBuffer RouteEcryption(String plainText){
+		char[] tmp = plainText.toCharArray();
+
+		ArrayList<ArrayList<Character>> mat = routeMatrixArrange(tmp);
+		
+		StringBuffer cipherText = new StringBuffer() ;
+		cipherText = SpiralTopLeftClockwise(mat);
+		
+			
+		
+
+		
+		return cipherText;
+	}
+	
+	public static StringBuffer RouteDecryption(String cipher){
+		StringBuffer plain = new StringBuffer();
+		
+		return plain;
+	}
+	
+}

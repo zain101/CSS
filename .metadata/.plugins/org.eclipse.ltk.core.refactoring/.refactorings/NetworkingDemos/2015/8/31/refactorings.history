@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;com.ciphers.CeaserCipher.KEY&apos; in &apos;com.ciphers.CeaserCipher&apos;&#x0A;- Original project: &apos;NetworkingDemos&apos;&#x0A;- Original element: &apos;com.ciphers.CeaserCipher.KEY&apos;&#x0A;- Getter method name: &apos;getKEY&apos;&#x0A;- Setter method name: &apos;setKEY&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;KEY&apos;" flags="589830" getter="getKEY" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;com.ciphers{CeaserCipher.java[CeaserCipher^KEY" insertion="0" setter="setKEY" stamp="1438438250698" version="1.0" visibility="1"/>
+</session>
